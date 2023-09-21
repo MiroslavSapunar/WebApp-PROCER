@@ -1,8 +1,8 @@
 {
-  "name": "strapi",
+  "name": "procer_cms",
   "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "version": "0.9",
+  "description": "Programa de Competitividad de Economías Regionales -PROCER-, CMS",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -17,10 +17,11 @@
     "pg": "8.8.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Miroslav Sapunar"
   },
   "strapi": {
-    "uuid": "f3cd841c-671e-403d-a323-fb96c7aa3990"
+    "uuid": "f3cd841c-671e-403d-a323-fb96c7aa3990",
+    "telemetryDisabled": true
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
