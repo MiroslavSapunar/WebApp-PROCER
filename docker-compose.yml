@@ -46,7 +46,7 @@ services:
       - strapiDB
 
   strapiDB:
-    container_name: strapiDB
+    container_name: ProcerDB
     restart: unless-stopped
     env_file: .env
     image: postgres:14.9-alpine3.17
