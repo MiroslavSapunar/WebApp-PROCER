@@ -57,7 +57,6 @@ services:
     volumes:
       # - strapi-data:/var/lib/postgresql/data/ #using a volume
       - ./db:/var/lib/postgresql/data/ # if you want to use a bind folder
-
     ports:
       - "5432:5432"
     networks:
