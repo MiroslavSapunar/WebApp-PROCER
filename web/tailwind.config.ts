@@ -22,6 +22,7 @@ const config: Config = {
       medium_tone_d: "#c3c5c9",
       medium_tone_l: "#e4f3fc",
       transparent: "#00000000",
+      white: "#ffffffff",
     },
     fontFamily: {
       'display': ['Open Sans Extrabold'],

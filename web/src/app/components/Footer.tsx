@@ -6,7 +6,7 @@ export default function Footer() {
                     <div className="w-full -mx-6 lg:w-2/5">
                         <div className="px-6">
                             <a href="#">
-                                <img className="w-auto h-7" src="logo-investigacion.jpg" alt=""/>
+                                <img className="w-auto h-15" src="brand_claim_BLANCO.svg" alt="" />
                             </a>
 
                             <p className="max-w-sm mt-2 text-gray-500 ">Lorem ipsum dolor sit amet, consec- tetuer adipiscing elit, sed diam nonum- my nibh euismod tincidunt</p>
@@ -73,16 +73,18 @@ export default function Footer() {
                                 <span className="block mt-2 text-sm text-gray-600 hover:underline">+1 526 654 8965</span>
                                 <span className="block mt-2 text-sm text-gray-600 hover:underline">example@email.com</span>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
-                <hr className="h-px my-6 bg-gray-200 border-none "/>
+                <hr className="h-px my-6 bg-gray-200 border-none " />
 
-                    <div>
-                        <p className="text-center text-gray-500 ">© Brand 2020 - All rights reserved</p>
-                    </div>
+                <div>
+                    <p className="text-center text-gray-500 ">© Brand 2020 - All rights reserved</p>
+                </div>
             </div>
         </footer>
     )
 }
+
