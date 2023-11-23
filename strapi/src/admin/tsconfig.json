@@ -8,6 +8,7 @@
     "node_modules/",
     "build/",
     "dist/",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "./webpack.config.example.js",
   ]
 }

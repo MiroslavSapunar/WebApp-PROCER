@@ -5,6 +5,7 @@ export default ({ env }) => ({
   apiToken: {
     salt: env('API_TOKEN_SALT'),
   },
+  url: env('PUBLIC_ADMIN_URL', '/dashboard'),
   transfer: {
     token: {
       salt: env('TRANSFER_TOKEN_SALT'),
