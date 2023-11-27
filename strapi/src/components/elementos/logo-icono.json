@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elementos_logo_iconos",
+  "info": {
+    "displayName": "Logo/Icono"
+  },
+  "options": {},
+  "attributes": {
+    "SVG": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
