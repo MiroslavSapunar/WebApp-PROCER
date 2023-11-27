@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elementos_faq_items",
+  "info": {
+    "displayName": "FAQ_Item"
+  },
+  "options": {},
+  "attributes": {
+    "Pregunta": {
+      "type": "string",
+      "required": true
+    },
+    "Respuesta": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
