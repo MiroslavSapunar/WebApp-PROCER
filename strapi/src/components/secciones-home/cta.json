@@ -1,0 +1,67 @@
+{
+  "collectionName": "components_secciones_home_ctas",
+  "info": {
+    "displayName": "CTA",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Cuerpo": {
+      "type": "blocks",
+      "required": false
+    },
+    "Sobretitulo": {
+      "type": "string"
+    },
+    "Background_Color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.croma",
+      "required": true
+    },
+    "Titulo_Color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.croma",
+      "required": true
+    },
+    "Cuerpo_Color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.croma"
+    },
+    "Sobretitulo_Color": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementos.croma"
+    },
+    "Background_Image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Tipografia_Titulo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.tipografia",
+      "required": true
+    },
+    "Tipografia_Cuerpo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.tipografia"
+    },
+    "Tipografia_Sobretitulo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.tipografia"
+    }
+  }
+}
