@@ -1,15 +1,18 @@
-.PHONY: up logs stop down resetStrapi exec build
+.PHONY: build up quiet logs stop resetStrapi down exec 
 
 build:
 	docker compose up --build
 
 up:
+	docker compose up
+
+quiet:
 	docker compose up -d
 
 logs:
 	docker compose logs -f
 
-stop:
+stop: 
 	docker compose stop
 
 resetStrapi:
