@@ -362,30 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomeHome extends Schema.SingleType {
-  collectionName: 'homes';
-  info: {
-    singularName: 'home';
-    pluralName: 'homes';
-    displayName: 'Home';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
-    Secciones: Attribute.DynamicZone<['secciones-home.cta']> &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -701,6 +677,167 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
+    Secciones: Attribute.DynamicZone<
+      ['secciones-home.cta', 'secciones-home.faq']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavBarNavBar extends Schema.SingleType {
+  collectionName: 'nav_bars';
+  info: {
+    singularName: 'nav-bar';
+    pluralName: 'nav-bars';
+    displayName: 'NavBar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    logo_svg: Attribute.Media & Attribute.Required;
+    Categorias: Attribute.Component<'navbar.categoria-menu', true> &
+      Attribute.Required;
+    Boton_Link: Attribute.Component<'elementos.boton-link'>;
+    Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.DefaultTo<'Croma_Principal_Oscuro'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nav-bar.nav-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nav-bar.nav-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavegacionNavegacion extends Schema.CollectionType {
+  collectionName: 'navegaciones';
+  info: {
+    singularName: 'navegacion';
+    pluralName: 'navegaciones';
+    displayName: 'Navegacion';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    seo_url: Attribute.String & Attribute.Required & Attribute.Unique;
+    Categoria: Attribute.Enumeration<
+      ['Servicios', 'Noticias', 'Institucional', 'Contacto', 'Registro']
+    > &
+      Attribute.DefaultTo<'Noticias'>;
+    pagina: Attribute.Relation<
+      'api::navegacion.navegacion',
+      'oneToOne',
+      'api::pagina.pagina'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navegacion.navegacion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navegacion.navegacion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPaginaPagina extends Schema.CollectionType {
+  collectionName: 'paginas';
+  info: {
+    singularName: 'pagina';
+    pluralName: 'paginas';
+    displayName: 'Pagina';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    seo: Attribute.Component<'shared.seo'>;
+    Nombre: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+      }>;
+    seo_nombre: Attribute.UID<'api::pagina.pagina', 'Nombre'> &
+      Attribute.Required;
+    navegacion: Attribute.Relation<
+      'api::pagina.pagina',
+      'oneToOne',
+      'api::navegacion.navegacion'
+    >;
+    Secciones: Attribute.DynamicZone<
+      [
+        'secciones-pagina.encabezado-imagen',
+        'secciones-pagina.texto-con-formato',
+        'secciones-pagina.carrousel-imagenes'
+      ]
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pagina.pagina',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pagina.pagina',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -711,13 +848,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::home.home': ApiHomeHome;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::home.home': ApiHomeHome;
+      'api::nav-bar.nav-bar': ApiNavBarNavBar;
+      'api::navegacion.navegacion': ApiNavegacionNavegacion;
+      'api::pagina.pagina': ApiPaginaPagina;
     }
   }
 }

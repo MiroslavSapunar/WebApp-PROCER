@@ -1,12 +1,50 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ElementosCroma extends Schema.Component {
-  collectionName: 'components_elementos_cromas';
+export interface ElementosBotonLink extends Schema.Component {
+  collectionName: 'components_elementos_boton_links';
   info: {
-    displayName: 'Croma';
+    displayName: 'Boton_Link';
     description: '';
   };
   attributes: {
+    Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Croma_Principal_Claro'>;
+    Estilo_Texto_Boton: Attribute.Component<'elementos.estilo-texto'>;
+    Navegacion: Attribute.Component<'navegacion.navegacion-interna'> &
+      Attribute.Required;
+  };
+}
+
+export interface ElementosEstiloTexto extends Schema.Component {
+  collectionName: 'components_elementos_estilo_textos';
+  info: {
+    displayName: 'Estilo_Texto';
+  };
+  attributes: {
+    Familia: Attribute.Enumeration<
+      ['Titular', 'Cuerpo_Regular', 'Cuerpo_Medium']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Cuerpo_Regular'>;
+    Tamanio: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 18;
+        max: 65;
+      }> &
+      Attribute.DefaultTo<35>;
     Color: Attribute.Enumeration<
       [
         'Croma_Principal_Oscuro',
@@ -45,23 +83,81 @@ export interface ElementosLogoIcono extends Schema.Component {
   };
 }
 
-export interface ElementosTipografia extends Schema.Component {
-  collectionName: 'components_elementos_tipografias';
+export interface ElementosTarjeta extends Schema.Component {
+  collectionName: 'components_elementos_tarjetas';
   info: {
-    displayName: 'Tipografia';
+    displayName: 'Tarjeta_Lisa';
     description: '';
   };
   attributes: {
-    Familia: Attribute.Enumeration<
-      ['Titular', 'Cuerpo_Regular', 'Cuerpo_Medium']
+    Titulo: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    Estilo_Titulo: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+    Resumen: Attribute.String & Attribute.Required;
+    Estilo_Resumen: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+    Sobretitulo: Attribute.String & Attribute.Required;
+    Estilo_Sobretitulo: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+    Background_Color: Attribute.Enumeration<
+      [
+        '        "Croma_Principal_Oscuro",',
+        '        "Croma_Principal_Claro",',
+        '        "Croma_Secundario_Oscuro",',
+        '        "Croma_Secundario_Claro",',
+        '        "Medio_Tono_Oscuro",',
+        '        "Medio_Tono_Claro",',
+        '        "Blanco",',
+        '        "Negro"'
+      ]
     > &
-      Attribute.DefaultTo<'Cuerpo_Regular'>;
-    Tamanio: Attribute.Integer &
-      Attribute.SetMinMax<{
-        min: 18;
-        max: 65;
-      }> &
-      Attribute.DefaultTo<35>;
+      Attribute.Required &
+      Attribute.DefaultTo<'        "Blanco",'>;
+  };
+}
+
+export interface NavbarCategoriaMenu extends Schema.Component {
+  collectionName: 'components_navbar_categoria_menus';
+  info: {
+    displayName: 'Categoria_Menu';
+    description: '';
+  };
+  attributes: {
+    Navegaciones: Attribute.Component<'navegacion.navegacion-interna', true> &
+      Attribute.Required;
+    Texto: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface NavegacionNavegacionExterna extends Schema.Component {
+  collectionName: 'components_navegacion_navegacion_externas';
+  info: {
+    displayName: 'Navegacion_Externa';
+    description: '';
+  };
+  attributes: {
+    url_externa: Attribute.String & Attribute.Required;
+    Texto: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface NavegacionNavegacionInterna extends Schema.Component {
+  collectionName: 'components_navegacion_navegacion_internas';
+  info: {
+    displayName: 'Navegacion_Interna';
+    description: '';
+  };
+  attributes: {
+    navegacion: Attribute.Relation<
+      'navegacion.navegacion-interna',
+      'oneToOne',
+      'api::navegacion.navegacion'
+    >;
+    Texto: Attribute.String & Attribute.Required;
   };
 }
 
@@ -73,19 +169,168 @@ export interface SeccionesHomeCta extends Schema.Component {
     description: '';
   };
   attributes: {
-    Titulo: Attribute.String & Attribute.Required;
-    Cuerpo: Attribute.Blocks;
-    Sobretitulo: Attribute.String;
-    Background_Color: Attribute.Component<'elementos.croma'> &
-      Attribute.Required;
-    Titulo_Color: Attribute.Component<'elementos.croma'> & Attribute.Required;
-    Cuerpo_Color: Attribute.Component<'elementos.croma'>;
-    Sobretitulo_Color: Attribute.Component<'elementos.croma', true>;
+    Titulo_Seccion: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 100;
+      }>;
+    Estilo_Titulo_Seccion: Attribute.Component<'elementos.estilo-texto'>;
+    Texto_Seccion: Attribute.Blocks;
+    Estilo_Texto_Seccion: Attribute.Component<'elementos.estilo-texto'>;
+    Sobretitulo_Seccion: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 100;
+      }>;
+    Estilo_Sobretitulo_Seccion: Attribute.Component<'elementos.estilo-texto'>;
+    Seccion_Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Blanco'>;
     Background_Image: Attribute.Media;
-    Tipografia_Titulo: Attribute.Component<'elementos.tipografia'> &
+    Navegacion_Interna: Attribute.Component<'navegacion.navegacion-interna'>;
+    Navegacion_Externa: Attribute.Component<'navegacion.navegacion-externa'>;
+    Boton_Link: Attribute.Component<'elementos.boton-link'>;
+  };
+}
+
+export interface SeccionesHomeFaq extends Schema.Component {
+  collectionName: 'components_secciones_home_faqs';
+  info: {
+    displayName: 'FAQ';
+    description: '';
+  };
+  attributes: {
+    Titulo_Seccion: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 100;
+      }>;
+    Estilo_Titulo_Seccion: Attribute.Component<'elementos.estilo-texto'>;
+    Texto_Seccion: Attribute.Blocks;
+    Estilo_Texto_Seccion: Attribute.Component<'elementos.estilo-texto'>;
+    Seccion_Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Blanco'>;
+    Item_Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Medio_Tono_Claro'>;
+    Items_FAQs: Attribute.Component<'elementos.faq-item', true> &
       Attribute.Required;
-    Tipografia_Cuerpo: Attribute.Component<'elementos.tipografia'>;
-    Tipografia_Sobretitulo: Attribute.Component<'elementos.tipografia'>;
+    Estilo_Preguntas: Attribute.Component<'elementos.estilo-texto'>;
+    Estilo_Respuestas: Attribute.Component<'elementos.estilo-texto'>;
+  };
+}
+
+export interface SeccionesHomeGrillaTarjetas extends Schema.Component {
+  collectionName: 'components_secciones_home_grilla_tarjetas';
+  info: {
+    displayName: 'Grilla_Tarjetas';
+  };
+  attributes: {
+    Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negr'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Blanco'>;
+    Tarjetas: Attribute.Component<'elementos.tarjeta', true> &
+      Attribute.Required;
+  };
+}
+
+export interface SeccionesPaginaCarrouselImagenes extends Schema.Component {
+  collectionName: 'components_elementos_carrousel_imagenes';
+  info: {
+    displayName: 'Carrousel_Imagenes';
+    description: '';
+  };
+  attributes: {
+    Imagenes: Attribute.Media & Attribute.Required;
+    Encabezado: Attribute.String;
+    Estilo_Encabezado: Attribute.Component<'elementos.estilo-texto'>;
+  };
+}
+
+export interface SeccionesPaginaEncabezadoImagen extends Schema.Component {
+  collectionName: 'components_secciones_pagina_encabezado_imagens';
+  info: {
+    displayName: 'Portada';
+    description: '';
+  };
+  attributes: {
+    Imagen: Attribute.Media;
+    Background_Color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Medio_Tono_Claro'>;
+  };
+}
+
+export interface SeccionesPaginaTextoConFormato extends Schema.Component {
+  collectionName: 'components_secciones_pagina_texto_con_formatoes';
+  info: {
+    displayName: 'Texto_Con_Formato';
+    description: '';
+  };
+  attributes: {
+    Encabezado: Attribute.String;
+    Estilo_Encabezado: Attribute.Component<'elementos.estilo-texto'>;
+    Texto: Attribute.Blocks & Attribute.Required;
+    Estilo_Texto: Attribute.Component<'elementos.estilo-texto'>;
   };
 }
 
@@ -143,11 +388,20 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'elementos.croma': ElementosCroma;
+      'elementos.boton-link': ElementosBotonLink;
+      'elementos.estilo-texto': ElementosEstiloTexto;
       'elementos.faq-item': ElementosFaqItem;
       'elementos.logo-icono': ElementosLogoIcono;
-      'elementos.tipografia': ElementosTipografia;
+      'elementos.tarjeta': ElementosTarjeta;
+      'navbar.categoria-menu': NavbarCategoriaMenu;
+      'navegacion.navegacion-externa': NavegacionNavegacionExterna;
+      'navegacion.navegacion-interna': NavegacionNavegacionInterna;
       'secciones-home.cta': SeccionesHomeCta;
+      'secciones-home.faq': SeccionesHomeFaq;
+      'secciones-home.grilla-tarjetas': SeccionesHomeGrillaTarjetas;
+      'secciones-pagina.carrousel-imagenes': SeccionesPaginaCarrouselImagenes;
+      'secciones-pagina.encabezado-imagen': SeccionesPaginaEncabezadoImagen;
+      'secciones-pagina.texto-con-formato': SeccionesPaginaTextoConFormato;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
