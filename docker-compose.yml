@@ -9,11 +9,15 @@ services:
     env_file: .env
     environment:
       NEXT_TELEMETRY_DISABLED: ${NEXT_TELEMETRY_DISABLED}
-      PORT: ${NEXT_PORT}
+      NEXT_PUBLIC_STRAPI_URL_FRONT: ${STRAPI_URL_FRONT}
+      NEXT_STRAPI_API_TOKEN: ${NEXT_STRAPI_API_TOKEN}
+      PORT: ${FRONT_PORT}
+      STRAPI_URL_BACK: ${STRAPI_URL_BACK}
+
     volumes:
       - ./web:/usr/src/app
     ports:
-      - "3000:3000"
+      - "${FRONT_PORT}:${FRONT_PORT}"
     networks:
       - procer
     depends_on:
@@ -23,19 +27,23 @@ services:
     container_name: ProcerCMS
     build: ./strapi
     restart: unless-stopped
-    command: sh -c "yarn build && yarn develop"
+    command: sh -c "yarn && yarn build && yarn develop"
     env_file: .env
     environment:
+      NODE_ENV: ${NODE_ENV}
+      HOST: ${HOST}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      APP_KEYS: ${APP_KEYS}
+      JWT_SECRET: ${JWT_SECRET}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: strapiDB
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: ${NODE_ENV}
+      STRAPI_DISABLE_REMOTE_DATA_TRANSFER: ${STRAPI_DISABLE_REMOTE_DATA_TRANSFER}
+      STRAPI_TELEMETRY_DISABLED: ${STRAPI_TELEMETRY_DISABLED}
     volumes:
       - ./strapi:/opt/app
       - ./data_strapi:/opt/app/public/uploads
