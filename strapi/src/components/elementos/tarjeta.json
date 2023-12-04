@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_elementos_tarjetas",
+  "info": {
+    "displayName": "Tarjeta_Lisa",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string",
+      "required": true,
+      "minLength": 2
+    },
+    "Estilo_Titulo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto",
+      "required": true
+    },
+    "Resumen": {
+      "type": "string",
+      "required": true
+    },
+    "Estilo_Resumen": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto",
+      "required": true
+    },
+    "Sobretitulo": {
+      "type": "string",
+      "required": true
+    },
+    "Estilo_Sobretitulo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto",
+      "required": true
+    },
+    "Background_Color": {
+      "type": "enumeration",
+      "enum": [
+        "        \"Croma_Principal_Oscuro\",",
+        "        \"Croma_Principal_Claro\",",
+        "        \"Croma_Secundario_Oscuro\",",
+        "        \"Croma_Secundario_Claro\",",
+        "        \"Medio_Tono_Oscuro\",",
+        "        \"Medio_Tono_Claro\",",
+        "        \"Blanco\",",
+        "        \"Negro\""
+      ],
+      "default": "        \"Blanco\",",
+      "required": true
+    }
+  }
+}
