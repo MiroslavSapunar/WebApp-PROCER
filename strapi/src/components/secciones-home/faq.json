@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_secciones_home_ctas",
+  "collectionName": "components_secciones_home_faqs",
   "info": {
-    "displayName": "CTA",
-    "icon": "dashboard",
+    "displayName": "FAQ",
     "description": ""
   },
   "options": {},
@@ -26,17 +25,6 @@
       "repeatable": false,
       "component": "elementos.estilo-texto"
     },
-    "Sobretitulo_Seccion": {
-      "type": "string",
-      "required": true,
-      "maxLength": 100,
-      "minLength": 5
-    },
-    "Estilo_Sobretitulo_Seccion": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elementos.estilo-texto"
-    },
     "Seccion_Background_Color": {
       "type": "enumeration",
       "enum": [
@@ -52,28 +40,36 @@
       "default": "Blanco",
       "required": true
     },
-    "Background_Image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "Item_Background_Color": {
+      "type": "enumeration",
+      "enum": [
+        "Croma_Principal_Oscuro",
+        "Croma_Principal_Claro",
+        "Croma_Secundario_Oscuro",
+        "Croma_Secundario_Claro",
+        "Medio_Tono_Oscuro",
+        "Medio_Tono_Claro",
+        "Blanco",
+        "Negro"
+      ],
+      "default": "Medio_Tono_Claro",
+      "required": true
     },
-    "Navegacion_Interna": {
+    "Items_FAQs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementos.faq-item",
+      "required": true
+    },
+    "Estilo_Preguntas": {
       "type": "component",
       "repeatable": false,
-      "component": "navegacion.navegacion-interna"
+      "component": "elementos.estilo-texto"
     },
-    "Navegacion_Externa": {
+    "Estilo_Respuestas": {
       "type": "component",
       "repeatable": false,
-      "component": "navegacion.navegacion-externa"
-    },
-    "Boton_Link": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elementos.boton-link"
+      "component": "elementos.estilo-texto"
     }
   }
 }

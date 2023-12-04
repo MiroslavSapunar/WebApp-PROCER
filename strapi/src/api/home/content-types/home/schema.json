@@ -21,9 +21,9 @@
     "Secciones": {
       "type": "dynamiczone",
       "components": [
-        "secciones-home.cta"
-      ],
-      "required": true
+        "secciones-home.cta",
+        "secciones-home.faq"
+      ]
     }
   }
 }

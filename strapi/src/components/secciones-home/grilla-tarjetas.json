@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_secciones_home_grilla_tarjetas",
+  "info": {
+    "displayName": "Grilla_Tarjetas"
+  },
+  "options": {},
+  "attributes": {
+    "Background_Color": {
+      "type": "enumeration",
+      "enum": [
+        "Croma_Principal_Oscuro",
+        "Croma_Principal_Claro",
+        "Croma_Secundario_Oscuro",
+        "Croma_Secundario_Claro",
+        "Medio_Tono_Oscuro",
+        "Medio_Tono_Claro",
+        "Blanco",
+        "Negr"
+      ],
+      "default": "Blanco",
+      "required": true
+    },
+    "Tarjetas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementos.tarjeta",
+      "required": true
+    }
+  }
+}
