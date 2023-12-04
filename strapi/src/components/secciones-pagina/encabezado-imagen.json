@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_secciones_pagina_encabezado_imagens",
+  "info": {
+    "displayName": "Portada",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Background_Color": {
+      "type": "enumeration",
+      "enum": [
+        "Croma_Principal_Oscuro",
+        "Croma_Principal_Claro",
+        "Croma_Secundario_Oscuro",
+        "Croma_Secundario_Claro",
+        "Medio_Tono_Oscuro",
+        "Medio_Tono_Claro",
+        "Blanco",
+        "Negro"
+      ],
+      "required": true,
+      "default": "Medio_Tono_Claro"
+    }
+  }
+}

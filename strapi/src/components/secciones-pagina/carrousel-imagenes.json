@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_elementos_carrousel_imagenes",
+  "info": {
+    "displayName": "Carrousel_Imagenes",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Imagenes": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Encabezado": {
+      "type": "string"
+    },
+    "Estilo_Encabezado": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto"
+    }
+  }
+}

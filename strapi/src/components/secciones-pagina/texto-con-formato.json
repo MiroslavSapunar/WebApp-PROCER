@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_secciones_pagina_texto_con_formatoes",
+  "info": {
+    "displayName": "Texto_Con_Formato",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Encabezado": {
+      "type": "string"
+    },
+    "Estilo_Encabezado": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto"
+    },
+    "Texto": {
+      "type": "blocks",
+      "required": true
+    },
+    "Estilo_Texto": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto",
+      "required": false
+    }
+  }
+}
