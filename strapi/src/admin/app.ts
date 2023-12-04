@@ -1,21 +1,21 @@
 import favicon from "./extensions/favicon.ico"
-import MenuLogo from "./extensions/RGB_1080x1080px_ISO_FondoAzul.png"
+import menuLogo from "./extensions/RGB_1080x1080px_ISO_FondoAzul.png"
 
 export default {
   config: {
     // Replace the Strapi logo in auth (login) views
     auth: {
-      logo: MenuLogo,
+      logo: menuLogo,
     },
-    // Replace the favicon
+    // Replace the favicon  
     head: {
       favicon: favicon,
     },
     // Add a new locale, other than 'en'
-    locales: ['es'],
+    locales: ["es"],
     // Replace the Strapi logo in the main navigation
     menu: {
-      logo: MenuLogo,
+      logo: menuLogo,
     },
     // Override or extend the theme
     theme: {
@@ -36,7 +36,5 @@ export default {
     notifications: { releases: false },
   },
 
-  bootstrap(app) {
-    console.log(app);
-  },
+  bootstrap() { },
 };
