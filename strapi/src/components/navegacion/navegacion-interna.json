@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_navegacion_navegacion_internas",
+  "info": {
+    "displayName": "Navegacion_Interna",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "navegacion": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::navegacion.navegacion"
+    },
+    "Texto": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

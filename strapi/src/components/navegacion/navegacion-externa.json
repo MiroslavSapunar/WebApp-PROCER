@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_navegacion_navegacion_externas",
+  "info": {
+    "displayName": "Navegacion_Externa",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url_externa": {
+      "type": "string",
+      "required": true,
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\/+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\/?([-a-zA-Z0-9()@:%_\\\\+.~#?&//=]*)"
+    },
+    "Texto": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

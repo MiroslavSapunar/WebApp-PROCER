@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navegaciones",
+  "info": {
+    "singularName": "navegacion",
+    "pluralName": "navegaciones",
+    "displayName": "Navegacion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo_url": {
+      "type": "string",
+      "required": true,
+      "regex": "^\\/[a-z0-9-\\/]+[^\\/]$",
+      "unique": true
+    },
+    "Categoria": {
+      "type": "enumeration",
+      "enum": [
+        "Servicios",
+        "Noticias",
+        "Institucional",
+        "Contacto",
+        "Registro"
+      ],
+      "required": false,
+      "default": "Noticias"
+    },
+    "pagina": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pagina.pagina",
+      "inversedBy": "navegacion"
+    }
+  }
+}
