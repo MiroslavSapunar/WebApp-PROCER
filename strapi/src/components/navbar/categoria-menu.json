@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_navbar_categoria_menus",
+  "info": {
+    "displayName": "Categoria_Menu",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Navegaciones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navegacion.navegacion-interna",
+      "required": true
+    },
+    "Texto": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
