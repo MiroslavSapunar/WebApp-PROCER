@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "Background_Color": {
+    "background_color": {
       "type": "enumeration",
       "enum": [
         "Croma_Principal_Oscuro",
@@ -16,18 +16,19 @@
         "Medio_Tono_Oscuro",
         "Medio_Tono_Claro",
         "Blanco",
-        "Negro"
+        "Negro",
+        "Transparente"
       ],
       "default": "Croma_Principal_Claro",
       "required": true
     },
-    "Estilo_Texto_Boton": {
+    "estilo_texto_boton": {
       "type": "component",
       "repeatable": false,
       "component": "elementos.estilo-texto",
-      "required": false
+      "required": true
     },
-    "Navegacion": {
+    "navegacion": {
       "type": "component",
       "repeatable": false,
       "component": "navegacion.navegacion-interna",

@@ -11,7 +11,7 @@
       "relation": "oneToOne",
       "target": "api::navegacion.navegacion"
     },
-    "Texto": {
+    "texto": {
       "type": "string",
       "required": true
     }

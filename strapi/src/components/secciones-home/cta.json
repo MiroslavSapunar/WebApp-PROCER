@@ -47,7 +47,8 @@
         "Medio_Tono_Oscuro",
         "Medio_Tono_Claro",
         "Blanco",
-        "Negro"
+        "Negro",
+        "Transparente"
       ],
       "default": "Blanco",
       "required": true

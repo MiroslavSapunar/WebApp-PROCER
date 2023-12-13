@@ -7,7 +7,7 @@ export interface ElementosBotonLink extends Schema.Component {
     description: '';
   };
   attributes: {
-    Background_Color: Attribute.Enumeration<
+    background_color: Attribute.Enumeration<
       [
         'Croma_Principal_Oscuro',
         'Croma_Principal_Claro',
@@ -16,13 +16,15 @@ export interface ElementosBotonLink extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Croma_Principal_Claro'>;
-    Estilo_Texto_Boton: Attribute.Component<'elementos.estilo-texto'>;
-    Navegacion: Attribute.Component<'navegacion.navegacion-interna'> &
+    estilo_texto_boton: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+    navegacion: Attribute.Component<'navegacion.navegacion-interna'> &
       Attribute.Required;
   };
 }
@@ -31,21 +33,22 @@ export interface ElementosEstiloTexto extends Schema.Component {
   collectionName: 'components_elementos_estilo_textos';
   info: {
     displayName: 'Estilo_Texto';
+    description: '';
   };
   attributes: {
-    Familia: Attribute.Enumeration<
+    familia: Attribute.Enumeration<
       ['Titular', 'Cuerpo_Regular', 'Cuerpo_Medium']
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Cuerpo_Regular'>;
-    Tamanio: Attribute.Integer &
+    tamanio: Attribute.Integer &
       Attribute.Required &
       Attribute.SetMinMax<{
         min: 18;
         max: 65;
       }> &
       Attribute.DefaultTo<35>;
-    Color: Attribute.Enumeration<
+    color: Attribute.Enumeration<
       [
         'Croma_Principal_Oscuro',
         'Croma_Principal_Claro',
@@ -54,7 +57,8 @@ export interface ElementosEstiloTexto extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
@@ -105,14 +109,15 @@ export interface ElementosTarjeta extends Schema.Component {
       Attribute.Required;
     Background_Color: Attribute.Enumeration<
       [
-        '        "Croma_Principal_Oscuro",',
-        '        "Croma_Principal_Claro",',
-        '        "Croma_Secundario_Oscuro",',
-        '        "Croma_Secundario_Claro",',
-        '        "Medio_Tono_Oscuro",',
-        '        "Medio_Tono_Claro",',
-        '        "Blanco",',
-        '        "Negro"'
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
@@ -127,9 +132,9 @@ export interface NavbarCategoriaMenu extends Schema.Component {
     description: '';
   };
   attributes: {
-    Navegaciones: Attribute.Component<'navegacion.navegacion-interna', true> &
+    navegaciones: Attribute.Component<'navegacion.navegacion-interna', true> &
       Attribute.Required;
-    Texto: Attribute.String & Attribute.Required;
+    categoria: Attribute.String & Attribute.Required;
   };
 }
 
@@ -157,7 +162,7 @@ export interface NavegacionNavegacionInterna extends Schema.Component {
       'oneToOne',
       'api::navegacion.navegacion'
     >;
-    Texto: Attribute.String & Attribute.Required;
+    texto: Attribute.String & Attribute.Required;
   };
 }
 
@@ -194,7 +199,8 @@ export interface SeccionesHomeCta extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
@@ -231,7 +237,8 @@ export interface SeccionesHomeFaq extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
@@ -245,7 +252,8 @@ export interface SeccionesHomeFaq extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &
@@ -312,7 +320,8 @@ export interface SeccionesPaginaEncabezadoImagen extends Schema.Component {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
       Attribute.Required &

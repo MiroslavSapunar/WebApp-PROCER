@@ -18,7 +18,7 @@
       "regex": "^\\/[a-z0-9-\\/]+[^\\/]$",
       "unique": true
     },
-    "Categoria": {
+    "categoria": {
       "type": "enumeration",
       "enum": [
         "Servicios",

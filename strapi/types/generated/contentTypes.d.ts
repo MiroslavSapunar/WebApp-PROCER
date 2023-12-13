@@ -715,10 +715,10 @@ export interface ApiNavBarNavBar extends Schema.SingleType {
   };
   attributes: {
     logo_svg: Attribute.Media & Attribute.Required;
-    Categorias: Attribute.Component<'navbar.categoria-menu', true> &
+    categorias: Attribute.Component<'navbar.categoria-menu', true> &
       Attribute.Required;
-    Boton_Link: Attribute.Component<'elementos.boton-link'>;
-    Background_Color: Attribute.Enumeration<
+    boton_link: Attribute.Component<'elementos.boton-link'>;
+    background_color: Attribute.Enumeration<
       [
         'Croma_Principal_Oscuro',
         'Croma_Principal_Claro',
@@ -727,10 +727,14 @@ export interface ApiNavBarNavBar extends Schema.SingleType {
         'Medio_Tono_Oscuro',
         'Medio_Tono_Claro',
         'Blanco',
-        'Negro'
+        'Negro',
+        'Transparente'
       ]
     > &
+      Attribute.Required &
       Attribute.DefaultTo<'Croma_Principal_Oscuro'>;
+    estilo_texto_categorias: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -761,7 +765,7 @@ export interface ApiNavegacionNavegacion extends Schema.CollectionType {
   };
   attributes: {
     seo_url: Attribute.String & Attribute.Required & Attribute.Unique;
-    Categoria: Attribute.Enumeration<
+    categoria: Attribute.Enumeration<
       ['Servicios', 'Noticias', 'Institucional', 'Contacto', 'Registro']
     > &
       Attribute.DefaultTo<'Noticias'>;

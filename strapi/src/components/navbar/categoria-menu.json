@@ -6,13 +6,13 @@
   },
   "options": {},
   "attributes": {
-    "Navegaciones": {
+    "navegaciones": {
       "type": "component",
       "repeatable": true,
       "component": "navegacion.navegacion-interna",
       "required": true
     },
-    "Texto": {
+    "categoria": {
       "type": "string",
       "required": true
     }

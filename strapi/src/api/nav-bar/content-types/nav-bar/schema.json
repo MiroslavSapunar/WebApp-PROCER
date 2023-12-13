@@ -20,18 +20,18 @@
         "images"
       ]
     },
-    "Categorias": {
+    "categorias": {
       "type": "component",
       "repeatable": true,
       "component": "navbar.categoria-menu",
       "required": true
     },
-    "Boton_Link": {
+    "boton_link": {
       "type": "component",
       "repeatable": false,
       "component": "elementos.boton-link"
     },
-    "Background_Color": {
+    "background_color": {
       "type": "enumeration",
       "enum": [
         "Croma_Principal_Oscuro",
@@ -41,10 +41,17 @@
         "Medio_Tono_Oscuro",
         "Medio_Tono_Claro",
         "Blanco",
-        "Negro"
+        "Negro",
+        "Transparente"
       ],
-      "required": false,
+      "required": true,
       "default": "Croma_Principal_Oscuro"
+    },
+    "estilo_texto_categorias": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.estilo-texto",
+      "required": true
     }
   }
 }

@@ -1,11 +1,12 @@
 {
   "collectionName": "components_elementos_estilo_textos",
   "info": {
-    "displayName": "Estilo_Texto"
+    "displayName": "Estilo_Texto",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Familia": {
+    "familia": {
       "type": "enumeration",
       "enum": [
         "Titular",
@@ -15,14 +16,14 @@
       "required": true,
       "default": "Cuerpo_Regular"
     },
-    "Tamanio": {
+    "tamanio": {
       "type": "integer",
       "default": 35,
       "max": 65,
       "min": 18,
       "required": true
     },
-    "Color": {
+    "color": {
       "type": "enumeration",
       "enum": [
         "Croma_Principal_Oscuro",
@@ -32,7 +33,8 @@
         "Medio_Tono_Oscuro",
         "Medio_Tono_Claro",
         "Blanco",
-        "Negro"
+        "Negro",
+        "Transparente"
       ],
       "default": "Blanco",
       "required": true
