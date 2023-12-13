@@ -1,21 +1,107 @@
-export default function NavBar() {
-    const links = ["Servicios", "Noticias", "Institucional", "Contacto", "Registrar Pyme"]
+import React from 'react';
+import { StrapiNavBar, StrapiNavBarCategoria } from '@modelsStrapi/single/navbar';
+import { endpoint, ETarget } from '@/utils/endpoints'
+import Image from 'next/image';
+import Link from 'next/link';
+import { StrapiBottonLink } from '../models/strapi/components';
+import { StrapiTextStyle } from '../models/strapi/base';
+
+interface NavBarProps {
+    navbarData: StrapiNavBar;
+}
+
+interface CategoriaProps {
+    categoria: StrapiNavBarCategoria;
+    textStyle: StrapiTextStyle
+}
+
+interface BotonProps {
+    botonLink: StrapiBottonLink
+}
+
+function Categoria({ categoria, textStyle }: CategoriaProps) {
+
+    console.log("CATEGORIA")
+    console.log(textStyle)
+
+    const categoriaStyle = `flex justify-end px-1 py-1.5 text-sm capitalize transition-colors duration-300 transform hover:bg-gray-100 text-${textStyle.color} hover:text-Croma_Principal_Claro`
 
     return (
-        <nav className="bg-[#0f46f5] shadow px-24 mx-auto md:flex md:justify-between md:items-center">
+        <div className="group relative inline-block mx-2.5">
+            <button
+                className="
+                relative z-10 block
+                text-white hover:text-Croma_Principal_Claro px-1 cursor-default  "
+            >
+                {categoria.categoria}
+            </button>
+            <div
+                className="absolute hidden h-auto group-hover:block bg-Blanco w-36 right-0 z-20 rounded-sm shadow-xl origin-top-right"
+            >
+                <ul className='top-0'>
 
-            <div className="flex items-center justify-between">
-                <a href="#">
-                    <img className="w-auto h-5" src="brand_BLANCO.svg" alt="" />
-                </a>    {/* <svg className="text-white w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m.75 19h7.092c4.552 0 6.131-6.037 2.107-8.203 2.701-2.354 1.029-6.797-2.595-6.797h-6.604c-.414 0-.75.336-.75.75v13.5c0 .414.336.75.75.75zm.75-13.5h5.854c3.211 0 3.215 4.768 0 4.768h-5.854zm0 6.268h6.342c3.861 0 3.861 5.732 0 5.732h-6.342z" /><path d="m18.374 7.857c-3.259 0-5.755 2.888-5.635 5.159-.247 3.28 2.397 5.984 5.635 5.984 2.012 0 3.888-1.065 4.895-2.781.503-.857-.791-1.613-1.293-.76-.739 1.259-2.12 2.041-3.602 2.041-2.187 0-3.965-1.668-4.125-3.771 1.443.017 4.136-.188 8.987-.033.016 0 .027-.008.042-.008 2-.09-.189-5.831-4.904-5.831zm-3.928 4.298c1.286-3.789 6.718-3.676 7.89.064-4.064.097-6.496-.066-7.89-.064z" /><path d="m21.308 6.464c.993 0 .992-1.5 0-1.5h-5.87c-.993 0-.992 1.5 0 1.5z" /></svg> */}
+                    {
+                        categoria.navegaciones.map((navegacion) => (
+                            <li key={navegacion.texto}>
+                                <Link href={navegacion.navegacion.data.attributes.seo_url} className={categoriaStyle} >
+                                    {navegacion.texto}
+                                </Link>
+                            </li>
+                        )
+                        )}
+                </ul>
             </div>
-            <div className="container flex items-center justify-end p-6 mx-auto text-white capitalize ">
+        </div>
+    )
+}
+
+function BotonLink({ botonLink }: BotonProps) {
+    const styleButton = `px-4 py-2 font-medium tracking-wide text-white bg-${botonLink.background_color} rounded-3xl`
+    return (
+        <div className="flex flex-none w-1/6 justify-end  ">
+            <button className={styleButton}>
+                <Link href={botonLink.navegacion.navegacion.data.attributes.seo_url}>
+                    {botonLink.navegacion.texto}
+                </Link>
+            </button>
+        </div>
+    )
+}
+
+export default async function NavBar({ navbarData }: NavBarProps) {
+
+    const navBar = navbarData.data.attributes;
+    const logo = navBar.logo_svg.data.attributes;
+    const botonLink = navBar.boton_link;
+
+    const styleNavbar = `bg-${navBar.background_color} w-full px-24 flex flex-row justify-between items-center`
+
+    return (
+        <nav className={styleNavbar}>
+            <div className="flex w-1/3 justify-start items-center ">
+                <Link href={"/"}>
+                    <div className='h-auto w-80 py-8 relative select-none' >
+                        {/* CHECKEAR CONSEGUIR LA INFO DESDE EL BACK */}
+                        <Image src={endpoint(ETarget.front, logo.url)} alt={logo.alternativeText}
+                            width={400}
+                            height={400}
+                            objectFit='contain'
+                        />
+                    </div>
+                </Link>
+            </div>
+            <div className="flex grow justify-end ">
                 {
-                    links.map(link =>
-                        <a href={`/${link}`} className="border-b-2 border-transparent transition-colors duration-300 transform hover:text-[#28c3fa] hover:border-[#28c3fa] mx-1.5 sm:mx-6">{link}</a>
-                    )
+                    navBar.categorias.map((categoria) => (
+                        <Categoria key={categoria.categoria}
+                            categoria={categoria}
+                            textStyle={navBar.estilo_texto_categorias}
+
+                        />
+                    ))
                 }
             </div>
+            <BotonLink botonLink={botonLink} />
         </nav>
-    )
+    );
 }
