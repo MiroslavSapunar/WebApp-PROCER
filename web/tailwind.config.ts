@@ -23,6 +23,15 @@ const config: Config = {
       medium_tone_l: "#e4f3fc",
       transparent: "#00000000",
       white: "#ffffffff",
+      Croma_Principal_Oscuro: "#0f46f5",
+      Croma_Principal_Claro: "#28c3fa",
+      Croma_Secundario_Oscuro: "#1e2346",
+      Croma_Secundario_Claro: "#c3c5c9",
+      Medio_Tono_Oscuro: "#c3c5c9",
+      Medio_Tono_Claro: "#e4f3fc",
+      Blanco: "#ffffffff",
+      Negro: "000000",
+      Transparente: "#00000000",
     },
     fontFamily: {
       'display': ['Open Sans Extrabold'],
@@ -30,5 +39,16 @@ const config: Config = {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /bg-(Croma_Principal_Oscuro|Croma_Principal_Claro|Croma_Secundario_Oscuro|Croma_Secundario_Claro|Medio_Tono_Oscuro|Medio_Tono_Claro|Blanco|Negro|Transparente)/,
+    },
+    {
+      pattern: /text-(Croma_Principal_Oscuro|Croma_Principal_Claro|Croma_Secundario_Oscuro|Croma_Secundario_Claro|Medio_Tono_Oscuro|Medio_Tono_Claro|Blanco|Negro|Transparente)/,
+    },
+  ],
+  variants: {
+    display: ["group-hover"]
+  },
 }
 export default config
