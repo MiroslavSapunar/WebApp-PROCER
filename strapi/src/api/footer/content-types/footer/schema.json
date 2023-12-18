@@ -1,0 +1,54 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo_svg": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "boton_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementos.boton-link"
+    },
+    "background_color": {
+      "type": "enumeration",
+      "enum": [
+        "Croma_Principal_Oscuro",
+        "Croma_Principal_Claro",
+        "Croma_Secundario_Oscuro",
+        "Croma_Secundario_Claro",
+        "Medio_Tono_Oscuro",
+        "Medio_Tono_Claro",
+        "Blanco",
+        "Negro",
+        "Transparente"
+      ],
+      "default": "Croma_Principal_Oscuro",
+      "required": true
+    },
+    "columnas": {
+      "type": "dynamiczone",
+      "components": [
+        "footer.tarjeta-principal",
+        "footer.tarjeta-vinculos"
+      ],
+      "max": 3,
+      "min": 1
+    }
+  }
+}
