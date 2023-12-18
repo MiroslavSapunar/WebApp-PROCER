@@ -677,6 +677,59 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    logo_svg: Attribute.Media & Attribute.Required;
+    boton_link: Attribute.Component<'elementos.boton-link'>;
+    background_color: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro',
+        'Transparente'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Croma_Principal_Oscuro'>;
+    columnas: Attribute.DynamicZone<
+      ['footer.tarjeta-principal', 'footer.tarjeta-vinculos']
+    > &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 3;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Schema.SingleType {
   collectionName: 'homes';
   info: {
@@ -858,6 +911,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::footer.footer': ApiFooterFooter;
       'api::home.home': ApiHomeHome;
       'api::nav-bar.nav-bar': ApiNavBarNavBar;
       'api::navegacion.navegacion': ApiNavegacionNavegacion;

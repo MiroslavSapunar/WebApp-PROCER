@@ -7,7 +7,7 @@ export interface ElementosBotonLink extends Schema.Component {
     description: '';
   };
   attributes: {
-    background_color: Attribute.Enumeration<
+    color_fondo: Attribute.Enumeration<
       [
         'Croma_Principal_Oscuro',
         'Croma_Principal_Claro',
@@ -22,10 +22,23 @@ export interface ElementosBotonLink extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Croma_Principal_Claro'>;
-    estilo_texto_boton: Attribute.Component<'elementos.estilo-texto'> &
+    navegacion: Attribute.Component<'elementos.navegacion-interna'> &
       Attribute.Required;
-    navegacion: Attribute.Component<'navegacion.navegacion-interna'> &
-      Attribute.Required;
+    color_texto: Attribute.Enumeration<
+      [
+        'Croma_Principal_Oscuro',
+        'Croma_Principal_Claro',
+        'Croma_Secundario_Oscuro',
+        'Croma_Secundario_Claro',
+        'Medio_Tono_Oscuro',
+        'Medio_Tono_Claro',
+        'Blanco',
+        'Negro',
+        'Transparente'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Blanco'>;
   };
 }
 
@@ -66,17 +79,6 @@ export interface ElementosEstiloTexto extends Schema.Component {
   };
 }
 
-export interface ElementosFaqItem extends Schema.Component {
-  collectionName: 'components_elementos_faq_items';
-  info: {
-    displayName: 'FAQ_Item';
-  };
-  attributes: {
-    Pregunta: Attribute.String & Attribute.Required;
-    Respuesta: Attribute.RichText & Attribute.Required;
-  };
-}
-
 export interface ElementosLogoIcono extends Schema.Component {
   collectionName: 'components_elementos_logo_iconos';
   info: {
@@ -84,6 +86,34 @@ export interface ElementosLogoIcono extends Schema.Component {
   };
   attributes: {
     SVG: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ElementosNavegacionExterna extends Schema.Component {
+  collectionName: 'components_navegacion_navegacion_externas';
+  info: {
+    displayName: 'Navegacion_Externa';
+    description: '';
+  };
+  attributes: {
+    url_externa: Attribute.String & Attribute.Required;
+    texto: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementosNavegacionInterna extends Schema.Component {
+  collectionName: 'components_navegacion_navegacion_internas';
+  info: {
+    displayName: 'Navegacion_Interna';
+    description: '';
+  };
+  attributes: {
+    navegacion: Attribute.Relation<
+      'elementos.navegacion-interna',
+      'oneToOne',
+      'api::navegacion.navegacion'
+    >;
+    texto: Attribute.String & Attribute.Required;
   };
 }
 
@@ -125,6 +155,35 @@ export interface ElementosTarjeta extends Schema.Component {
   };
 }
 
+export interface FooterTarjetaPrincipal extends Schema.Component {
+  collectionName: 'components_footer_tarjeta_principals';
+  info: {
+    displayName: 'tarjeta_principal';
+    description: '';
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    descripcion: Attribute.Blocks & Attribute.Required;
+    logos_svg: Attribute.Media;
+    estilo_texto_titulo: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+    estilo_texto_descripcion: Attribute.Component<'elementos.estilo-texto'> &
+      Attribute.Required;
+  };
+}
+
+export interface FooterTarjetaVinculos extends Schema.Component {
+  collectionName: 'components_footer_tarjeta_vinculos';
+  info: {
+    displayName: 'tarjeta_vinculos';
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    vinculos: Attribute.Component<'elementos.navegacion-interna', true> &
+      Attribute.Required;
+  };
+}
+
 export interface NavbarCategoriaMenu extends Schema.Component {
   collectionName: 'components_navbar_categoria_menus';
   info: {
@@ -132,37 +191,9 @@ export interface NavbarCategoriaMenu extends Schema.Component {
     description: '';
   };
   attributes: {
-    navegaciones: Attribute.Component<'navegacion.navegacion-interna', true> &
+    navegaciones: Attribute.Component<'elementos.navegacion-interna', true> &
       Attribute.Required;
     categoria: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface NavegacionNavegacionExterna extends Schema.Component {
-  collectionName: 'components_navegacion_navegacion_externas';
-  info: {
-    displayName: 'Navegacion_Externa';
-    description: '';
-  };
-  attributes: {
-    url_externa: Attribute.String & Attribute.Required;
-    Texto: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface NavegacionNavegacionInterna extends Schema.Component {
-  collectionName: 'components_navegacion_navegacion_internas';
-  info: {
-    displayName: 'Navegacion_Interna';
-    description: '';
-  };
-  attributes: {
-    navegacion: Attribute.Relation<
-      'navegacion.navegacion-interna',
-      'oneToOne',
-      'api::navegacion.navegacion'
-    >;
-    texto: Attribute.String & Attribute.Required;
   };
 }
 
@@ -206,9 +237,21 @@ export interface SeccionesHomeCta extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'Blanco'>;
     Background_Image: Attribute.Media;
-    Navegacion_Interna: Attribute.Component<'navegacion.navegacion-interna'>;
-    Navegacion_Externa: Attribute.Component<'navegacion.navegacion-externa'>;
+    Navegacion_Interna: Attribute.Component<'elementos.navegacion-interna'>;
+    Navegacion_Externa: Attribute.Component<'elementos.navegacion-externa'>;
     Boton_Link: Attribute.Component<'elementos.boton-link'>;
+  };
+}
+
+export interface SeccionesHomeFaqItem extends Schema.Component {
+  collectionName: 'components_elementos_faq_items';
+  info: {
+    displayName: 'FAQ_Item';
+    description: '';
+  };
+  attributes: {
+    Pregunta: Attribute.String & Attribute.Required;
+    Respuesta: Attribute.RichText & Attribute.Required;
   };
 }
 
@@ -258,7 +301,7 @@ export interface SeccionesHomeFaq extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Medio_Tono_Claro'>;
-    Items_FAQs: Attribute.Component<'elementos.faq-item', true> &
+    Items_FAQs: Attribute.Component<'secciones-home.faq-item', true> &
       Attribute.Required;
     Estilo_Preguntas: Attribute.Component<'elementos.estilo-texto'>;
     Estilo_Respuestas: Attribute.Component<'elementos.estilo-texto'>;
@@ -399,13 +442,15 @@ declare module '@strapi/types' {
     export interface Components {
       'elementos.boton-link': ElementosBotonLink;
       'elementos.estilo-texto': ElementosEstiloTexto;
-      'elementos.faq-item': ElementosFaqItem;
       'elementos.logo-icono': ElementosLogoIcono;
+      'elementos.navegacion-externa': ElementosNavegacionExterna;
+      'elementos.navegacion-interna': ElementosNavegacionInterna;
       'elementos.tarjeta': ElementosTarjeta;
+      'footer.tarjeta-principal': FooterTarjetaPrincipal;
+      'footer.tarjeta-vinculos': FooterTarjetaVinculos;
       'navbar.categoria-menu': NavbarCategoriaMenu;
-      'navegacion.navegacion-externa': NavegacionNavegacionExterna;
-      'navegacion.navegacion-interna': NavegacionNavegacionInterna;
       'secciones-home.cta': SeccionesHomeCta;
+      'secciones-home.faq-item': SeccionesHomeFaqItem;
       'secciones-home.faq': SeccionesHomeFaq;
       'secciones-home.grilla-tarjetas': SeccionesHomeGrillaTarjetas;
       'secciones-pagina.carrousel-imagenes': SeccionesPaginaCarrouselImagenes;
