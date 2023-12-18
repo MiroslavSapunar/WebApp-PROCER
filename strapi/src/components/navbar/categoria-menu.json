@@ -9,7 +9,7 @@
     "navegaciones": {
       "type": "component",
       "repeatable": true,
-      "component": "navegacion.navegacion-interna",
+      "component": "elementos.navegacion-interna",
       "required": true
     },
     "categoria": {

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elementos_faq_items",
   "info": {
-    "displayName": "FAQ_Item"
+    "displayName": "FAQ_Item",
+    "description": ""
   },
   "options": {},
   "attributes": {

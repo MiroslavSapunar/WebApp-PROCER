@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "background_color": {
+    "color_fondo": {
       "type": "enumeration",
       "enum": [
         "Croma_Principal_Oscuro",
@@ -22,16 +22,26 @@
       "default": "Croma_Principal_Claro",
       "required": true
     },
-    "estilo_texto_boton": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elementos.estilo-texto",
-      "required": true
-    },
     "navegacion": {
       "type": "component",
       "repeatable": false,
-      "component": "navegacion.navegacion-interna",
+      "component": "elementos.navegacion-interna",
+      "required": true
+    },
+    "color_texto": {
+      "type": "enumeration",
+      "enum": [
+        "Croma_Principal_Oscuro",
+        "Croma_Principal_Claro",
+        "Croma_Secundario_Oscuro",
+        "Croma_Secundario_Claro",
+        "Medio_Tono_Oscuro",
+        "Medio_Tono_Claro",
+        "Blanco",
+        "Negro",
+        "Transparente"
+      ],
+      "default": "Blanco",
       "required": true
     }
   }

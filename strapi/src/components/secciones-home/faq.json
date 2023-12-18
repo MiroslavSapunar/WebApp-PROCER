@@ -60,7 +60,7 @@
     "Items_FAQs": {
       "type": "component",
       "repeatable": true,
-      "component": "elementos.faq-item",
+      "component": "secciones-home.faq-item",
       "required": true
     },
     "Estilo_Preguntas": {

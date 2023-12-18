@@ -64,12 +64,12 @@
     "Navegacion_Interna": {
       "type": "component",
       "repeatable": false,
-      "component": "navegacion.navegacion-interna"
+      "component": "elementos.navegacion-interna"
     },
     "Navegacion_Externa": {
       "type": "component",
       "repeatable": false,
-      "component": "navegacion.navegacion-externa"
+      "component": "elementos.navegacion-externa"
     },
     "Boton_Link": {
       "type": "component",
