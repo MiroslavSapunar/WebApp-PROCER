@@ -30,7 +30,7 @@
       "@components/*": [
         "src/app/components/*"
       ],
-      "@modelsStrapi/*": [
+      "@strapi/*": [
         "src/app/models/strapi/*"
       ],
       "@public/*": [
