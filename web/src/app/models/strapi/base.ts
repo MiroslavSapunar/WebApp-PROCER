@@ -1,6 +1,3 @@
-import { StrapiComponent } from "./components"
-
-
 export type StrapiBase = {
     data: {
         id: number,
@@ -9,6 +6,11 @@ export type StrapiBase = {
             updatedAt: string,
         }
     }
+}
+
+export type StrapiComponent = {
+    __component: string,
+    id: number
 }
 
 export type StrapiPagination = {
@@ -66,42 +68,25 @@ export type StrapiImg = StrapiBase & StrapiFile & {
     }
 }
 
-export type StrapiNavBar = StrapiBase & {
-    data: {
-        attributes: {
-            logo_svg: StrapiImg,
-            Categorias: string,
-            Boton_link: string
-        }
-    }
+// export type StrapiNavBar = StrapiBase & {
+//     data: {
+//         attributes: {
+//             logo_svg: StrapiImg,
+//             Categorias: string,
+//             Boton_link: string
+//         }
+//     }
+// }
+
+
+type StrapiRichContent = {
+    text: string,
+    type: "text"
 }
 
-export type StrapiPagina = StrapiBase & {
-    data: {
-        attributes: {
-            seo: string,
-            nombre: string,
-            seo_nombre: string,
-            navegacion: StrapiNavegacion,
-            secciones: StrapiComponent[]
-        }
-    }
-}
-
-export type StrapiNavegacion = StrapiBase & {
-    data: {
-        attributes: {
-            seo_url: string,
-            pagina: StrapiPagina,
-            categoria: StrapiCategoria
-        }
-    }
-}
-
-export type StrapiTextStyle = {
-    familia: StrapiFontFamily,
-    tamanio: number,
-    color: StrapiBaseColor
+export type StrapiRichText = {
+    type: "paragraph",
+    children: StrapiRichContent[]
 }
 
 export type StrapiCategoria = "Servicios" | "Noticias" | "Institucional" | "Contacto" | "Registro"
