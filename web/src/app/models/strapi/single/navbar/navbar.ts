@@ -1,12 +1,9 @@
 // import { StrapiBase, StrapiComponent, StrapiImg } from "../Base";
 
-import { StrapiBase, StrapiImg, StrapiBaseColor, StrapiTextStyle } from "@modelsStrapi/base";
-import { StrapiBottonLink, StrapiNavegacionInterna, StrapiComponent } from "@modelsStrapi/components";
-
-export type StrapiNavBarCategoria = StrapiComponent & {
-    categoria: string,
-    navegaciones: StrapiNavegacionInterna[]
-}
+import { StrapiBase, StrapiImg, StrapiBaseColor } from "@strapi/base";
+import { StrapiBottonLink } from '@strapi/componentes/elementos/boton_link';
+import { StrapiTextStyle } from '@strapi/componentes/elementos/estilo_texto';
+import { StrapiNavBarCategoria } from '@strapi/single/navbar/categorias';
 
 export type StrapiNavBar = StrapiBase & {
     data: {
