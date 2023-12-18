@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_tarjeta_vinculos",
+  "info": {
+    "displayName": "tarjeta_vinculos"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "vinculos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementos.navegacion-interna",
+      "required": true
+    }
+  }
+}
