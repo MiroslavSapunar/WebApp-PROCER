@@ -1,10 +1,11 @@
-import React from 'react';
-import { StrapiNavBar, StrapiNavBarCategoria } from '@modelsStrapi/single/navbar';
-import { endpoint, ETarget } from '@/utils/endpoints'
-import Image from 'next/image';
+// import React from 'react';
 import Link from 'next/link';
-import { StrapiBottonLink } from '../models/strapi/components';
-import { StrapiTextStyle } from '../models/strapi/base';
+import Image from 'next/image';
+import { endpoint, ETarget } from '@/utils/endpoints'
+import { StrapiNavBar } from '@strapi/single/navbar/navbar';
+import { StrapiNavBarCategoria } from '@strapi/single/navbar/categorias';
+import { StrapiBottonLink } from '@strapi/componentes/elementos/boton_link';
+import { StrapiTextStyle } from '@strapi/componentes/elementos/estilo_texto';
 
 interface NavBarProps {
     navbarData: StrapiNavBar;
@@ -21,9 +22,6 @@ interface BotonProps {
 
 function Categoria({ categoria, textStyle }: CategoriaProps) {
 
-    console.log("CATEGORIA")
-    console.log(textStyle)
-
     const categoriaStyle = `flex justify-end px-1 py-1.5 text-sm capitalize transition-colors duration-300 transform hover:bg-gray-100 text-${textStyle.color} hover:text-Croma_Principal_Claro`
 
     return (
@@ -39,7 +37,6 @@ function Categoria({ categoria, textStyle }: CategoriaProps) {
                 className="absolute hidden h-auto group-hover:block bg-Blanco w-36 right-0 z-20 rounded-sm shadow-xl origin-top-right"
             >
                 <ul className='top-0'>
-
                     {
                         categoria.navegaciones.map((navegacion) => (
                             <li key={navegacion.texto}>
@@ -48,15 +45,16 @@ function Categoria({ categoria, textStyle }: CategoriaProps) {
                                 </Link>
                             </li>
                         )
-                        )}
+                        )
+                    }
                 </ul>
             </div>
         </div>
     )
 }
 
-function BotonLink({ botonLink }: BotonProps) {
-    const styleButton = `px-4 py-2 font-medium tracking-wide text-white bg-${botonLink.background_color} rounded-3xl`
+function RegistryBoton({ botonLink }: BotonProps) {
+    const styleButton = `px-4 py-2 font-medium tracking-wide text-${botonLink.color_texto} bg-${botonLink.color_fondo} rounded-3xl`
     return (
         <div className="flex flex-none w-1/6 justify-end  ">
             <button className={styleButton}>
@@ -68,13 +66,13 @@ function BotonLink({ botonLink }: BotonProps) {
     )
 }
 
-export default async function NavBar({ navbarData }: NavBarProps) {
+export default function NavBar({ navbarData }: NavBarProps) {
 
     const navBar = navbarData.data.attributes;
     const logo = navBar.logo_svg.data.attributes;
     const botonLink = navBar.boton_link;
 
-    const styleNavbar = `bg-${navBar.background_color} w-full px-24 flex flex-row justify-between items-center`
+    const styleNavbar = `bg-${navBar.background_color} w-full px-12 md:px-24 flex flex-row justify-between items-center`
 
     return (
         <nav className={styleNavbar}>
@@ -82,7 +80,7 @@ export default async function NavBar({ navbarData }: NavBarProps) {
                 <Link href={"/"}>
                     <div className='h-auto w-80 py-8 relative select-none' >
                         {/* CHECKEAR CONSEGUIR LA INFO DESDE EL BACK */}
-                        <Image src={endpoint(ETarget.front, logo.url)} alt={logo.alternativeText}
+                        <Image src={endpoint(ETarget.front, logo.url) || '/brand_Blanco.svg'} alt={logo.alternativeText || 'logo_navbar'}
                             width={400}
                             height={400}
                             objectFit='contain'
@@ -101,7 +99,10 @@ export default async function NavBar({ navbarData }: NavBarProps) {
                     ))
                 }
             </div>
-            <BotonLink botonLink={botonLink} />
+            {
+                botonLink &&
+                <RegistryBoton botonLink={botonLink} />
+            }
         </nav>
     );
 }
