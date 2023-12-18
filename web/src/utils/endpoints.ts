@@ -22,14 +22,35 @@ export const endpoint = (destino: ETarget, url: string): string => {
 
 export const queryHome = qs.stringify(
     {
-        populate: ['logo_svg', 'categorias.navegaciones.navegacion', 'estilo_texto_categorias', 'boton_link.navegacion.navegacion']
+        populate:
+            [
+                'logo_svg',
+                'categorias.navegaciones.navegacion',
+                'estilo_texto_categorias',
+                'boton_link.navegacion.navegacion'
+            ]
     },
     {
-        encodeValuesOnly: true, // prettify URL
+        encodeValuesOnly: true
+    }
+);
+
+export const queryFooter = qs.stringify(
+    {
+        populate:
+            [
+                'logo_svg',
+                'boton_link.navegacion.navegacion',
+                'columnas',
+            ]
+    },
+    {
+        encodeValuesOnly: true
     }
 );
 
 export const strapi_url = {
     base: `/`,
     navbar: `/api/nav-bar?${queryHome}`,
+    footer: `/api/footer?${queryFooter}`,
 }
