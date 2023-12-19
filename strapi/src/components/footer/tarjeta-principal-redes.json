@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_footer_tarjeta_principal_redes",
+  "info": {
+    "displayName": "Tarjeta_Principal_Redes"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "logo_svg": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

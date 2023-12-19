@@ -706,7 +706,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Croma_Principal_Oscuro'>;
-    columnas: Attribute.DynamicZone<
+    tarjetas: Attribute.DynamicZone<
       ['footer.tarjeta-principal', 'footer.tarjeta-vinculos']
     > &
       Attribute.SetMinMax<{

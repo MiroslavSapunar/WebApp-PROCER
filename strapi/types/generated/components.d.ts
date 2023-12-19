@@ -155,6 +155,17 @@ export interface ElementosTarjeta extends Schema.Component {
   };
 }
 
+export interface FooterTarjetaPrincipalRedes extends Schema.Component {
+  collectionName: 'components_footer_tarjeta_principal_redes';
+  info: {
+    displayName: 'Tarjeta_Principal_Redes';
+  };
+  attributes: {
+    url: Attribute.String & Attribute.Required;
+    logo_svg: Attribute.Media & Attribute.Required;
+  };
+}
+
 export interface FooterTarjetaPrincipal extends Schema.Component {
   collectionName: 'components_footer_tarjeta_principals';
   info: {
@@ -164,11 +175,17 @@ export interface FooterTarjetaPrincipal extends Schema.Component {
   attributes: {
     titulo: Attribute.String & Attribute.Required;
     descripcion: Attribute.Blocks & Attribute.Required;
-    logos_svg: Attribute.Media;
     estilo_texto_titulo: Attribute.Component<'elementos.estilo-texto'> &
       Attribute.Required;
     estilo_texto_descripcion: Attribute.Component<'elementos.estilo-texto'> &
       Attribute.Required;
+    redes_sociales: Attribute.Component<
+      'footer.tarjeta-principal-redes',
+      true
+    > &
+      Attribute.SetMinMax<{
+        max: 4;
+      }>;
   };
 }
 
@@ -446,6 +463,7 @@ declare module '@strapi/types' {
       'elementos.navegacion-externa': ElementosNavegacionExterna;
       'elementos.navegacion-interna': ElementosNavegacionInterna;
       'elementos.tarjeta': ElementosTarjeta;
+      'footer.tarjeta-principal-redes': FooterTarjetaPrincipalRedes;
       'footer.tarjeta-principal': FooterTarjetaPrincipal;
       'footer.tarjeta-vinculos': FooterTarjetaVinculos;
       'navbar.categoria-menu': NavbarCategoriaMenu;

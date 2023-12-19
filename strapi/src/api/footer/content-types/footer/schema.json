@@ -41,7 +41,7 @@
       "default": "Croma_Principal_Oscuro",
       "required": true
     },
-    "columnas": {
+    "tarjetas": {
       "type": "dynamiczone",
       "components": [
         "footer.tarjeta-principal",
