@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { endpoint, ETarget } from '@/utils/endpoints'
 import { StrapiNavBar } from '@strapi/single/navbar/navbar';
 import { StrapiNavBarCategoria } from '@strapi/single/navbar/categorias';
-import { StrapiBottonLink } from '@strapi/componentes/elementos/boton_link';
-import { StrapiTextStyle } from '@strapi/componentes/elementos/estilo_texto';
+import { StrapiBottonLink } from '@/app/models/strapi/components/elementos/boton_link';
+import { StrapiTextStyle } from '@/app/models/strapi/components/elementos/estilo_texto';
 
 interface NavBarProps {
     navbarData: StrapiNavBar;

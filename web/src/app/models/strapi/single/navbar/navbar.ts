@@ -1,8 +1,8 @@
 // import { StrapiBase, StrapiComponent, StrapiImg } from "../Base";
 
 import { StrapiBase, StrapiImg, StrapiBaseColor } from "@strapi/base";
-import { StrapiBottonLink } from '@strapi/componentes/elementos/boton_link';
-import { StrapiTextStyle } from '@strapi/componentes/elementos/estilo_texto';
+import { StrapiBottonLink } from '@/app/models/strapi/components/elementos/boton_link';
+import { StrapiTextStyle } from '@/app/models/strapi/components/elementos/estilo_texto';
 import { StrapiNavBarCategoria } from '@strapi/single/navbar/categorias';
 
 export type StrapiNavBar = StrapiBase & {
