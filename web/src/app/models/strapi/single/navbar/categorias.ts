@@ -1,5 +1,5 @@
 import { StrapiComponent } from '@strapi/base';
-import { StrapiNavegacionInterna } from '@strapi/componentes/elementos/navegacion_interna';
+import { StrapiNavegacionInterna } from '@/app/models/strapi/components/elementos/navegacion_interna';
 
 export type StrapiNavBarCategoria = StrapiComponent & {
     categoria: string,

@@ -68,17 +68,6 @@ export type StrapiImg = StrapiBase & StrapiFile & {
     }
 }
 
-// export type StrapiNavBar = StrapiBase & {
-//     data: {
-//         attributes: {
-//             logo_svg: StrapiImg,
-//             Categorias: string,
-//             Boton_link: string
-//         }
-//     }
-// }
-
-
 type StrapiRichContent = {
     text: string,
     type: "text"
