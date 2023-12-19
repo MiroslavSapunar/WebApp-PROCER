@@ -1,4 +1,4 @@
-import { StrapiDynamicComponentAny } from '@/app/models/strapi/componentes/any'
+import { StrapiDynamicComponentAny } from '@strapi/components/any'
 import { StrapiDynamicComponentFactory } from "./factory"
 
 type StrapiDynamicComponentsProps = {
@@ -12,9 +12,9 @@ export const DynamicComponents: React.FC<StrapiDynamicComponentsProps> = ({ comp
         <>
             { 
                 dynamicComponentsReact.map((component,i) => 
-                    <div key={i}>
+                    <>
                         {component()}
-                    </div>)
+                    </>)
             }
         </>
     )
