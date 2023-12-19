@@ -27,7 +27,7 @@ export const queryHome = qs.stringify(
                 'logo_svg',
                 'categorias.navegaciones.navegacion',
                 'estilo_texto_categorias',
-                'boton_link.navegacion.navegacion'
+                'boton_link.navegacion.navegacion.navegacion'
             ]
     },
     {
@@ -37,12 +37,32 @@ export const queryHome = qs.stringify(
 
 export const queryFooter = qs.stringify(
     {
-        populate:
-            [
-                'logo_svg',
-                'boton_link.navegacion.navegacion',
-                'columnas',
-            ]
+        populate: {
+            logo_svg: {
+                populate: true,
+            },
+            boton_link: {
+                populate: true,
+            },
+            tarjetas: {
+                populate: {
+                    redes_sociales: {
+                        populate: {
+                            logo_svg: {
+                                populate: true,
+                            },
+                        },
+                    },
+                    vinculos: {
+                        populate: {
+                            navegacion: {
+                                populate: true,
+                            }
+                        },
+                    }
+                }
+            }
+        }
     },
     {
         encodeValuesOnly: true
